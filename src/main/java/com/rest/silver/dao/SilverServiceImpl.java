@@ -23,10 +23,7 @@ public class SilverServiceImpl implements SilverService{
 	@Autowired
 	private SilverRepository silverRepo;
 
-	public Silver checkUser(String requestHeader) {
-		logger.info("RequestHeader: "+requestHeader);
-		String userId = Integer.toString(Math.abs(requestHeader.hashCode()),36);
-		logger.info("UserId generated: "+userId);
+	public Silver checkUser(String userId) {
 		Silver user = fetchUser(userId);
 		if (user == null) {
 			logger.info("This UserId-" + userId + " doesn't exist in database, so create new user");
