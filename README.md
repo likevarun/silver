@@ -21,7 +21,7 @@ When the application is up/running then hit URL  http://localhost:8080/state/  o
 
 ###3. What is this repository for?
 
-    The repository is the solution providing RESTful service covering business requirements for Silver Project.
+    The repository is the RESTful service solution covering business requirements for Silver Project.
 
 ###4. Assumptions/Improvements
 
