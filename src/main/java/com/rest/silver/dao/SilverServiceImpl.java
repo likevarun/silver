@@ -41,6 +41,7 @@ public class SilverServiceImpl implements SilverService{
 	}
 
 	public int getSum(String userId) {
+		logger.info("Getting sum for userId:"+userId);
 		String str = getState(userId);
 		String[] part = str.split("[^A-Z0-9]+|(?<=[A-Z])(?=[0-9])|(?<=[0-9])(?=[A-Z])");
 		int sum = 0;
@@ -54,6 +55,7 @@ public class SilverServiceImpl implements SilverService{
 	}
 
 	public String getChars(String userId) {
+		logger.info("Getting chars for userId:"+userId);
 		String str = getState(userId);
 		String[] part = str.split("[A-Z0-9]+|(?<=[A-Z])(?=[0-9])|(?<=[0-9])(?=[A-Z])");
 		String chars = "";
@@ -67,6 +69,7 @@ public class SilverServiceImpl implements SilverService{
 	}
 
 	public Silver postState(String userId, SilverPojo s) throws CustomErrorType, Exception{
+		logger.info("Post chars for userId:"+userId);
 		if (s.getCharacter().length() != 1) {
 			logger.error(s.getCharacter()+" - Not a single alphanumeric character");
 			throw new CustomErrorType(s.getCharacter()+" - Not a single alphanumeric character");
