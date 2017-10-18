@@ -16,7 +16,8 @@ $ git clone https://github.com/likevarun/silver
 
 $ mvn clean install spring-boot:run
 
-When the application is up/running then hit URL  http://localhost:8080/state/  on browser address bar. UserId will get appened on URL, capture the new URL.
+When the application is up/running then hit URL  http://localhost:8080/state/  on browser address bar. 
+UserId will get appened on URL, capture the new URL.
 
 
 ###3. What is this repository for?
