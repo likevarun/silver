@@ -35,5 +35,19 @@ public class SilverRepositoryTest {
         // then
         assertThat(sil.getUserId()).isEqualTo(found.getUserId());
     }
+	
+	@Test
+    public void whenSave_thenReturnSameSilver() {
+        // given
+        Silver sil = new Silver("123345","");
+        entityManager.persist(sil);
+        entityManager.flush();
+     
+        // when
+        Silver found = silverRepositoryMock.save(sil);
+     
+        // then
+        assertThat(sil).isEqualTo(found);
+    }
 
 }
