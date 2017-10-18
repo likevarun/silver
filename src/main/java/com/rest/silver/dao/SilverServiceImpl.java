@@ -1,5 +1,6 @@
 package com.rest.silver.dao;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,20 +9,24 @@ import org.springframework.stereotype.Service;
 import com.rest.silver.model.SilverPojo;
 import com.rest.silver.util.CustomErrorType;
 
-import eu.bitwalker.useragentutils.UserAgent;
-
+/**
+ * SilverServiceImpl class contains SilverService implementations and interacting
+ * with ServiceRepository to perform CRUD operation on database table. 
+ * 
+ * @author likevarun
+ *
+ */
 @Service("silverService")
 public class SilverServiceImpl implements SilverService{
 	public static final Logger logger = LoggerFactory.getLogger(SilverServiceImpl.class);
 
 	@Autowired
-	SilverRepository silverRepo;
+	private SilverRepository silverRepo;
 
 	public Silver checkUser(String requestHeader) {
 		logger.info("RequestHeader: "+requestHeader);
-		UserAgent userAgent = UserAgent.parseUserAgentString(requestHeader);
-		String userId = String.valueOf(userAgent.getBrowser().getId())
-				+ String.valueOf(userAgent.getOperatingSystem().getId());
+		String userId = Integer.toString(Math.abs(requestHeader.hashCode()),36);
+		logger.info("UserId generated: "+userId);
 		Silver user = fetchUser(userId);
 		if (user == null) {
 			logger.info("This UserId-" + userId + " doesn't exist in database, so create new user");

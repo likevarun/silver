@@ -23,13 +23,20 @@ import com.rest.silver.dao.SilverService;
 import com.rest.silver.model.SilverPojo;
 import com.rest.silver.util.CustomErrorType;
 
+/**
+ * Silver REST controller facilitating GET, POST, DELETE requests
+ * 
+ * @author likevarun
+ *
+ */
 @RestController
 @RequestMapping("")
 public class SilverRestController {
 
 	public static final Logger logger = LoggerFactory.getLogger(SilverRestController.class);
+
 	@Autowired
-	SilverService silverService;
+	private SilverService silverService;
 
 	// ------------------- GET ---------------------------------------------
 
@@ -70,7 +77,7 @@ public class SilverRestController {
 	// ------------------- Post -------------------------------------------
 
 	@RequestMapping(value = "/chars", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Map<String, String>> postMessage(@RequestBody SilverPojo silver, HttpServletRequest request,
+	public ResponseEntity<Map<String, String>> postChars(@RequestBody SilverPojo silver, HttpServletRequest request,
 			UriComponentsBuilder ucBuilder) {
 		logger.info("Post chars: Silver {}", silver);
 		Silver sil, user = null;
@@ -96,7 +103,7 @@ public class SilverRestController {
 	// ------------------- Delete ------------------------------------------
 
 	@RequestMapping(value = "/chars/{character}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Map<String, String>> deleteMessage(@PathVariable char character, HttpServletRequest request,
+	public ResponseEntity<Map<String, String>> deleteChars(@PathVariable char character, HttpServletRequest request,
 			UriComponentsBuilder ucBuilder) {
 		logger.info("Delete char: Silver {}", character);
 		Map<String, String> map = new HashMap<String, String>();
